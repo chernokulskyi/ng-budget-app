@@ -1,0 +1,48 @@
+<form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+  <div class="field is-horizontal">
+    <div class="field-body">
+      <div class="field is-narrow">
+        <p class="control is-expanded has-icons-left">
+          <input
+            class="input amount-input"
+            type="number"
+            name="amount"
+            placeholder="Amount"
+            required
+            [ngModel]="item?.amount"
+          >
+          <span class="icon is-small is-left">
+            <i class="fas fa-coins"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control is-expanded has-icons-left">
+          <input
+            class="input"
+            type="text"
+            name="description"
+            placeholder="Description"
+            required
+            [ngModel]="item?.description"
+          >
+          <span class="icon is-small is-left">
+            <i class="fas fa-pencil"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field is-narrow">
+        <button
+          class="button"
+          [ngClass]="{ 'is-primary': isNewItem, 'is-success': !isNewItem }"
+          type="submit"
+          [disabled]="!itemForm.valid"
+        >
+          {{ isNewItem ? 'Add' : 'Save' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
